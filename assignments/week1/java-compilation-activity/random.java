@@ -12,4 +12,8 @@ public class random{
 			System.out.println(s);
 		}
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> refs/remotes/origin/main
