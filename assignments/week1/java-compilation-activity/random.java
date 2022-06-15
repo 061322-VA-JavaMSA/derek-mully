@@ -1,4 +1,4 @@
-public class RandomNumber{
+public class Random{
 	public static void main(String[] args){
 		System.out.println("hello!");
 }
