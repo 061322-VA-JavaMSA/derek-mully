@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class FirstProgram {
 	
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in); {
 		
 		String username = "admin";
 		String password = "pass";
@@ -39,22 +39,18 @@ public class FirstProgram {
 		scan.nextLine();
 		scan.nextLine();
     	
-	    String answer;
+	    String input;
 	    boolean yn = true;	    
 	    System.out.println("y/n");
 	    while (yn) {
-	    	answer = scan.nextLine().trim().toLowerCase(); {
+	    	input = scan.nextLine().trim().toLowerCase(); 
 	    		 
-	    	if (answer.equals("y")) {
+	    	if (input.equals("y")) {
 	            yn = true; 
 	            break; 
-	    	} else if (answer.equals("n")) {
-	            yn = false;
-	            break;
 	    	} else {
-	            System.out.println("please enter again");
-	            scan.close();
-	            return;
+	            System.out.println("try again");
+	    scan.close();
 	    
 	    
 
@@ -62,7 +58,6 @@ public class FirstProgram {
 	    		
 	    	}
 	    }
-	    
-	}
+    }
 }	
 }
