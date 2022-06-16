@@ -18,25 +18,51 @@ public class FirstProgram {
 	    } else {
 			System.out.println("Invalid credentials"); }
 		
-		
 		System.out.println("Welcome, citizen!");
-		System.out.println("Today we are going to figure out your three favorite numbers between 1-10");
+		System.out.println("Today we are going to figure out your three favorite numbers");
 		System.out.println("Please give me your first number");
 		
-		int num = scan.nextInt();
+		int num1 = scan.nextInt();
 		
-		System.out.println(num + "is a great number!");
-		System.out.println("Give me your next favorite number between 1-10");
+		System.out.println(num1 + "is a great number!");
+		System.out.println("Give me your next favorite number");
 		
 		int num2 = scan.nextInt();
 		
 		System.out.println("Wow!" + num2 + "is an even better number!");
-		System.out.println("What's your third favorite number between 1=10?");
+		System.out.println("What's your third favorite number?");
 		
 		int num3 = scan.nextInt();
-	}	
+	
+		System.out.println("So" + num1 + num2 + num3 + "are your three favorite numbers? Type y for yes or n for no");
 		
-		
-		
-		
+		scan.nextLine();
+		scan.nextLine();
+    	
+	    String answer;
+	    boolean yn = true;	    
+	    System.out.println("y/n");
+	    while (yn) {
+	    	answer = scan.nextLine().trim().toLowerCase(); {
+	    		 
+	    	if (answer.equals("y")) {
+	            yn = true; 
+	            break; 
+	    	} else if (answer.equals("n")) {
+	            yn = false;
+	            break;
+	    	} else {
+	            System.out.println("please enter again");
+	            scan.close();
+	            return;
+	    
+	    
+
+	    	
+	    		
+	    	}
+	    }
+	    
+	}
+}	
 }
