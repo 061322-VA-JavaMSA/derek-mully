@@ -47,11 +47,14 @@ public class FirstProgram {
 	    		 
 	    	if (input.equals("y")) {
 	            yn = true; 
-	            break; 
-	    	} else {
-	            System.out.println("try again");
+	            break; }
+	    	if (input.equals("n")) {
+	    	    yn = false;
+	    	    continue; }
+	       
 	    scan.close();
-	    
+	        
+	    System.out.println("Congratulations! You have passed the test. You have now been logged out.");
 	    
 
 	    	
@@ -60,4 +63,3 @@ public class FirstProgram {
 	    }
     }
 }	
-}
