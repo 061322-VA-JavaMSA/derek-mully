@@ -35,13 +35,13 @@ public class FirstProgram {
 		int num3 = scan.nextInt();
 	
 		System.out.println("So" + num1 + num2 + num3 + "are your three favorite numbers? Type y for yes or n for no");
+		System.out.println("y/n");
 		
 		scan.nextLine();
 		scan.nextLine();
     	
 	    String input;
 	    boolean yn = true;	    
-	    System.out.println("y/n");
 	    while (yn) {
 	    	input = scan.nextLine().trim().toLowerCase(); 
 	    		 
@@ -51,9 +51,10 @@ public class FirstProgram {
 	    	if (input.equals("n")) {
 	    	    yn = false;
 	    	    continue; }
-	       
+	    	
 	    scan.close();
-	        
+	    
+	    System.out.println("Backwards, your three favorite numbers read" + num3 + num2 + num1);
 	    System.out.println("Congratulations! You have passed the test. You have now been logged out.");
 	    
 
