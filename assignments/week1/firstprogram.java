@@ -1,11 +1,10 @@
-package RandomNumMenu;
+import java.util.Scanner;
 
-public class RandomNumMenu {
+public class FirstProgram {
 	
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
-	public static void loginScreen() {
 		String username = "admin";
 		String password = "pass";
 		
@@ -14,14 +13,11 @@ public class RandomNumMenu {
 		System.out.println("Please enter your password");
 		String passwordInput = scan.nextLine();
 		
-		if(username.equals(usernameInput && password.equals(passwordInput))) {
+		if(username.equals(usernameInput) && password.equals(passwordInput)) {
 			System.out.println("Welcome!");
 	    } else {
-			System.out.println("Invalid credentials");
-	}
+			System.out.println("Invalid credentials"); }
 		
-	public static void main(String[] args) {
-		java.util.Scanner scan = new Scanner(System.in);
 		
 		System.out.println("Welcome, citizen!");
 		System.out.println("Today we are going to figure out your three favorite numbers between 1-10");
@@ -29,16 +25,18 @@ public class RandomNumMenu {
 		
 		int num = scan.nextInt();
 		
-		System.out.println(number + "is a great number!");
+		System.out.println(num + "is a great number!");
 		System.out.println("Give me your next favorite number between 1-10");
 		
-		int num = scan.nextInt();
+		int num2 = scan.nextInt();
 		
-		System.out.println("Wow!" + number + "is an even better number!");
+		System.out.println("Wow!" + num2 + "is an even better number!");
 		System.out.println("What's your third favorite number between 1=10?");
 		
-		int num = scan.nextInt();
+		int num3 = scan.nextInt();
+	}	
 		
 		
 		
 		
+}
