@@ -1,0 +1,13 @@
+Task Manager
+
+Users
+String Role (to seperate customer, employee and manager)
+//enum (maybe use this)
+boolean (possibly use to seperate employee and customer and manager)
+
+int id
+String name
+String username
+String password
+
+Tasks
