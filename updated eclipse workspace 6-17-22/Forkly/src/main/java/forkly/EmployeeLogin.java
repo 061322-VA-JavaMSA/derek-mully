@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class CustomerLogin {
+public class EmployeeLogin {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -25,7 +25,7 @@ public class CustomerLogin {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CustomerLogin window = new CustomerLogin();
+					EmployeeLogin window = new EmployeeLogin();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +37,7 @@ public class CustomerLogin {
 	/**
 	 * Create the application.
 	 */
-	public CustomerLogin() {
+	public EmployeeLogin() {
 		initialize();
 	}
 
@@ -72,7 +72,7 @@ public class CustomerLogin {
 		passwordField.setBounds(246, 246, 296, 32);
 		frame.getContentPane().add(passwordField);
 		
-		JLabel lblNewLabel_1 = new JLabel("CUSTOMER LOGIN");
+		JLabel lblNewLabel_1 = new JLabel("EMPLOYEE LOGIN");
 		lblNewLabel_1.setFont(new Font("Montserrat ExtraLight", Font.BOLD, 24));
 		lblNewLabel_1.setBounds(203, 80, 236, 32);
 		frame.getContentPane().add(lblNewLabel_1);
