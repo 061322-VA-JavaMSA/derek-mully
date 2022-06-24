@@ -1,5 +1,6 @@
 package ForklyCustomers;
 
+import java.sql.Connection;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -10,6 +11,7 @@ public class NewCustomer{
 	public static String userName = null;
 	public static String passWord = null;
 	public static NewCustomer nc = new NewCustomer();
+	public static Connection getHardcodedConnection;
 	
 	public static void main(String[] args) {
 		
