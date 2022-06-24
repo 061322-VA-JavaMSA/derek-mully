@@ -7,12 +7,10 @@ public class Item {
 	int offer;
 	int userId;
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 
 	public void setId(int id) {
-		// TODO Auto-generated method stub
 		this.itemId = id;
 	}
 	
@@ -21,7 +19,6 @@ public class Item {
 	}
 
 	public void setItemname(String itemName) {
-		// TODO Auto-generated method stub
 		this.itemName = itemName;
 	}
 	
@@ -30,7 +27,6 @@ public class Item {
 	}
 
 	public void setPrice(int price) {
-		// TODO Auto-generated method stub
 		this.price = price;
 	}
 	
@@ -43,7 +39,6 @@ public class Item {
 	}
 
 	public int getOffer() {
-		// TODO Auto-generated method stub
 		return offer;
 	}
 	public void setOffer(int offer) {

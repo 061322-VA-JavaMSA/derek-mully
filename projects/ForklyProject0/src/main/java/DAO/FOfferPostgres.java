@@ -15,7 +15,6 @@ public class FOfferPostgres implements FOfferDAO {
 
 
 	public List<Offer> retrieveOffers() throws SQLException, IOException {
-		// TODO Auto-generated method stub
 		String sql = "select * from offers;";
 		List<Offer> offers = new ArrayList<>();
 		
@@ -35,6 +34,11 @@ public class FOfferPostgres implements FOfferDAO {
 			e.printStackTrace();
 		}
 		return offers;
+	}
+
+	@Override
+	public boolean updateOffer(Offer o) {
+		return false;
 	}
 
 }

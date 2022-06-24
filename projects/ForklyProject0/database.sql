@@ -1,11 +1,11 @@
 drop table if exists users cascade;
 
-create table if not exists customer(
+create table if not exists users(
 	user_id serial primary key,
-	first_name varchar(30),
-	last_name varchar(30),
-	user_name varchar(30) unique not null check(length(user_name) > 2),
-	pass_word varchar(30) not null
+	firstname varchar(30),
+	lastname varchar(30),
+	username varchar(30) unique not null check(length(username) > 2),
+	password varchar(30) not null
 );
 
 drop table if exists items cascade;
@@ -26,7 +26,7 @@ drop table if exists payments cascade;
 
 create table if not exists payments(
 	payment_id serial primary key,
-	pending_payment integer references customers(customer_id)
+	pending_payment integer references users(user_id)
 );
 
 drop table if exists employees cascade;

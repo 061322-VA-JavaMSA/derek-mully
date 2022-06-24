@@ -3,18 +3,16 @@ package Model;
 public class Offer {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	int offerId;
-	int itemId;
 	int userId;
+	int itemId;
 	int price;
 	int status;
 
 	public void setOfferId(int offerId) {
-		// TODO Auto-generated method stub
 		this.offerId = offerId;
 	}
 	
@@ -23,8 +21,14 @@ public class Offer {
 	}
 
 
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public int getUserId(){
+		return userId;
+	}
+	
 	public void setItemID(int itemId) {
-		// TODO Auto-generated method stub
 		this.itemId = itemId;
 	}
 	public int getItemId() {
@@ -32,25 +36,16 @@ public class Offer {
 	}
 
 
-	public void setUserId(int userId) {
-		// TODO Auto-generated method stub
-		this.userId = userId;
-	}
-	public int getUserId(){
-		return userId;
-	}
-
-
 	public void setPrice(int price) {
-		// TODO Auto-generated method stub
 		this.price = price;
 	}
 	public int getPrice() {
 		return price;
 	}
 	
+	
 	public String toString() {
-		return "offer [offerId=" + offerId + ",itemId=" + itemId + ", userId=" + userId + ", price=" + price + "]";
+		return "offer [offerId=" + offerId + ", userId=\" + userIditemId=" + itemId + ", price=" + price + "]";
 	}
 
 	public void setStatus(int status2) {

@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface FOfferDAO {
 	List<Offer> retrieveOffers() throws SQLException, IOException;
+
+	boolean updateOffer(Offer o);
 }
