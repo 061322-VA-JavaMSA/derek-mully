@@ -1,14 +1,14 @@
 package ForklyUtil;
 
+import java.util.Properties;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
-public class ForklyConnect {
-	// using c as a variable to prevent redundancies
-private static Connection c;
+public class ForklyConnect{
+	private static Connection c;
+
 	
 	public static Connection getConnectionFromFile() throws SQLException, IOException {
 		Properties prop = new Properties();
@@ -26,16 +26,5 @@ private static Connection c;
 		return c;
 	}
 	
-	public static Connection getConnectionFromEnv() throws SQLException {
-		
-		String url = System.getenv("DB_URL");
-		String username = System.getenv("DB_USER");
-		String password = System.getenv("DB_PASS");
-		
-		if (c == null || c.isClosed()) {
-			c = DriverManager.getConnection(url, username, password);
-		}
-		
-		return c;
-	}
+
 }
