@@ -8,19 +8,7 @@ import java.util.Properties;
 
 public class ForklyConnect {
 	// using c as a variable to prevent redundancies
-	private static Connection c;
-
-	public static Connection getHardcodedConnection() throws SQLException {
-		String url = "jdbc:postgresql://localhost:5432/postgres";
-		String username = "postgres";
-		String password = "elephant";
-
-		if (c == null || c.isClosed()) {
-			c = DriverManager.getConnection(url, username, password);
-		}
-		
-		return c;
-	}
+private static Connection c;
 	
 	public static Connection getConnectionFromFile() throws SQLException, IOException {
 		Properties prop = new Properties();

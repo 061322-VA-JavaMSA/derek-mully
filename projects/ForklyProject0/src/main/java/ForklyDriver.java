@@ -1,17 +1,20 @@
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import ForklyExceptions.LoginException;
 import Forkly.Customer;
 import ForklyServices.ForklyAuthorization;
 import ForklyServices.ForklyCustomers;
-
 
 public class ForklyDriver {
 	
 	static Scanner scan;
 	static ForklyAuthorization fa;
 	static ForklyCustomers fu;
+	private static Logger log = LogManager.getLogger(ForklyDriver.class);
 	
 	public static void main(String[] args) {
 		scan = new Scanner(System.in);
@@ -27,9 +30,11 @@ public class ForklyDriver {
 		password = scan.nextLine();
 		
 		try {
+			
 			System.out.println(fa.login(username, password));
 		} catch (LoginException e) {
 			System.out.println("That doesn't look right. Please try again.");
+			log.error("Login exception was thrown: " + e.fillInStackTrace());
 			e.printStackTrace();
 		}
 

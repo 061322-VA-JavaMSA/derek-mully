@@ -1,6 +1,7 @@
 package ForklyLogin;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -11,10 +12,10 @@ public class NewCustomer {
 	public static String userName = null;
 	public static String passWord = null;
 	public static NewCustomer nc = new NewCustomer();
-	public static Connection getHardcodedConnection;
+	public static Connection getConnectionFromFile;
 		
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		
 		try(Scanner scan = new Scanner(System.in)){
 			
@@ -33,10 +34,8 @@ public class NewCustomer {
 			System.out.println("What is your last name? ");
 			String lastName = scan.nextLine();
 			nc.setLastName(lastName);
-			
+		    
 			scan.close();
-			
-			System.out.println(nc.toString());
 		}
 	}
 	public static String getUserName() {
@@ -86,6 +85,8 @@ public class NewCustomer {
 	public String toString() {
 		return "Customer Entered: [First Name = " + firstName + ", Last Name = " + lastName
 				+ "Username Entered: = " + userName + ", Password = " + passWord + "]";
+		
+	
 	
 	
 	}

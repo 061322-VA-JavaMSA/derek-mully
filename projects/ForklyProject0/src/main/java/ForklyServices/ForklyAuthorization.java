@@ -15,11 +15,11 @@ public class ForklyAuthorization {
 			//if customers don't have input then an exception is thrown
 		}
 		
-		Customer u = cd.retrieveUserByUsername(username);
-		if(u == null || !u.getPassword().equals(password)) {
+		Customer cu = cd.retrieveUserByUsername(username);
+		if(cu == null || !cu.getPassword().equals(password)) {
 			throw new LoginException();
 			// if customer input is incorrect then an exception is thrown
 		}
-		return u;
+		return cu;
 	}
 }

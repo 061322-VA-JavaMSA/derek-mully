@@ -14,23 +14,23 @@ import ForklyUtil.ForklyConnect;
 public class ForklyCustomerPostgresSQL implements CustomerDAO{
 
 	@Override
-	public Customer createUser(Customer u) {
+	public Customer createUser(Customer cu) {
 		String sql = "insert into users (username, password) values (?,?) returning id;";
 		try(Connection c = ForklyConnect.getConnectionFromEnv()){
 			PreparedStatement ps = c.prepareStatement(sql);
-			ps.setString(1, u.getUsername());
-			ps.setString(2, u.getPassword());
+			ps.setString(1, cu.getUsername());
+			ps.setString(2, cu.getPassword());
 			
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
-				u.setId(rs.getInt("id"));
+				cu.setId(rs.getInt("id"));
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return u;
+		return cu;
 	}
 
 	@Override
@@ -67,12 +67,12 @@ public class ForklyCustomerPostgresSQL implements CustomerDAO{
 			ResultSet rs = s.executeQuery(sql);
 			
 			while(rs.next()) {
-				Customer u = new Customer();
-				u.setId(rs.getInt("id"));
-				u.setUsername(rs.getString("username"));
-				u.setPassword(rs.getString("password"));
+				Customer cu = new Customer();
+				cu.setId(rs.getInt("id"));
+				cu.setUsername(rs.getString("username"));
+				cu.setPassword(rs.getString("password"));
 				
-				users.add(u);
+				users.add(cu);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -84,7 +84,7 @@ public class ForklyCustomerPostgresSQL implements CustomerDAO{
 	@Override
 	public Customer retrieveUserByUsername(String username) {
 		String sql = "select * from users where username  = ?;";
-		Customer u = null;
+		Customer cu = null;
 		
 		try (Connection c = ForklyConnect.getConnectionFromEnv();){
 			PreparedStatement ps = c.prepareStatement(sql);
@@ -94,30 +94,30 @@ public class ForklyCustomerPostgresSQL implements CustomerDAO{
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				u = new Customer();
-				u.setId(rs.getInt("id"));
-				u.setUsername(rs.getString("username"));
-				u.setPassword(rs.getString("password"));
+				cu = new Customer();
+				cu.setId(rs.getInt("id"));
+				cu.setUsername(rs.getString("username"));
+				cu.setPassword(rs.getString("password"));
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return u;
+		return cu;
 	}
 
 	@Override
-	public boolean updateUser(Customer u) {
+	public boolean updateUser(Customer cu) {
 		String sql = "update users set username = ?, password = ? where id = ?;";
 		int rowsChanged = -1;
 		
 		try(Connection c = ForklyConnect.getConnectionFromEnv()){
 			PreparedStatement ps = c.prepareStatement(sql);
 			
-			ps.setString(1, u.getUsername());
-			ps.setString(2, u.getPassword());
-			ps.setInt(3, u.getId());
+			ps.setString(1, cu.getUsername());
+			ps.setString(2, cu.getPassword());
+			ps.setInt(3, cu.getId());
 			
 			rowsChanged = ps.executeUpdate();
 			
