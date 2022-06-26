@@ -49,7 +49,13 @@ public class Offer {
 	}
 
 	public void setStatus(int status2) {
+		this.status = status;
 		// TODO Auto-generated method stub
 		
+	}
+
+	public int getStatus() {
+		// TODO Auto-generated method stub
+		return status;
 	}
 }

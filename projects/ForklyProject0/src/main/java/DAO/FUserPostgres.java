@@ -1,11 +1,14 @@
 package DAO;
 
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import ForklyUtil.ForklyConnect;
 import Model.User;
@@ -14,8 +17,6 @@ import Model.User;
 public class FUserPostgres implements FUserDAO {
 	public static void main(String[] args) {
 	}
-	
-	
 
 	public User createUser(User u) throws IOException {
 		String sql = "insert into users (username, password) values (?,?) returning user_id;";

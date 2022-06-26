@@ -18,4 +18,13 @@ public class FOfferServe {
 		return od.updateOffer(o);
 		
 	}
+
+	public Offer retrieveOfferById(int offerId) throws SQLException, IOException {
+		return od.retrieveOffersById(offerId);
+	}
+
+	public boolean rejectPendingOffers(int itemId) throws IOException {
+		return od.rejectPendingOffer(itemId); 
+		
+	}
 }

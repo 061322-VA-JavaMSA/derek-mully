@@ -7,26 +7,31 @@ import FException.LoginException;
 import FService.FAuthorization;
 import FService.FItemServe;
 import FService.FOfferServe;
+import FService.FPaymentServe;
 import FService.FUserServe;
 import Model.Item;
 import Model.User;
 import Model.Offer;
+import Model.Payment;
 
 public class ForklyDriver {
 	static Scanner scan;
-	static FAuthorization as;
-	static FUserServe us;
-	static FItemServe is;
-	static FOfferServe os;
+	static FAuthorization fa;
+	static FUserServe fu;
+	static FPaymentServe fp;
+	static FItemServe fi;
+	static FOfferServe fo;
 	static String username = null;
 	static String password = null;
 	static int user_id;
 	public static void main(String[] args) throws LoginException, IOException, SQLException {
+		fa = new FAuthorization();
+		fo = new FOfferServe();
+		fp = new FPaymentServe();
+		fu = new FUserServe();
+		fi = new FItemServe();
+		
 		scan = new Scanner(System.in);
-		as = new FAuthorization();
-		us = new FUserServe();
-		is = new FItemServe();
-		os = new FOfferServe();
 		
 		System.out.println("Press 1 to register a new account. Press 2 to login. Then hit enter.");
 		
@@ -38,7 +43,7 @@ public class ForklyDriver {
 					User userTBC = new User();
 					userTBC.setUsername(uname);
 					userTBC.setPassword(pass);
-					System.out.println(us.createUser(userTBC));
+					System.out.println(fu.createUser(userTBC));
 					username = uname;
 					password = pass;
 					break;
@@ -48,7 +53,7 @@ public class ForklyDriver {
 					System.out.println("Enter your password:");
 					password = scan.next();	
 					break;
-			default: System.out.println("That's not it. Please try again.");
+			default: System.out.println("That's not it. Please try again. Press 0 to exit.");
 					 System.exit(0);
 		}
 		
@@ -59,14 +64,14 @@ public class ForklyDriver {
 	
 	public static void loginPage(String username, String password) throws IOException, SQLException {
 		try {
-			as.login(username, password);
+			fa.login(username, password);
 			
 		} catch (LoginException e) {
-			System.out.println("That's not it. Please try again.");
+			System.out.println("That's not it. Please try again. Press 0 to exit.");
 			System.exit(0);
 		}
-		user_id = as.checkid(username);
-		if(as.checkAdmin(username) == false) {
+		user_id = fa.checkid(username);
+		if(fa.checkAdmin(username) == false) {
 			menu();
 		} else {
 			adminMenu();
@@ -91,7 +96,7 @@ public class ForklyDriver {
 	}
 	
 	public static void listItem() throws SQLException, IOException {
-		List<Item> items = is.getItems();
+		List<Item> items = fi.getItems();
 		for(Item i: items) {
 			System.out.println(i);
 		}
@@ -109,7 +114,7 @@ public class ForklyDriver {
 		i.setId(itemid);
 		i.setOffer(price);
 		i.setUserId(user_id);
-		is.makeOffer(i);
+		fi.makeOffer(i);
 		System.out.println("Your offer has been received. Please wait at least 3 business days for a response.");
 		
 	}
@@ -131,7 +136,7 @@ public class ForklyDriver {
 				break;
 		case 3: checkOffers();
 				break;
-		default: 
+		default:
 				adminMenu();
 				break;
 	}
@@ -149,7 +154,7 @@ public class ForklyDriver {
 		Item addItem = new Item();
 		addItem.setItemname(itemname);
 		addItem.setPrice(price);
-		System.out.println(is.createItem(addItem));
+		System.out.println(fi.createItem(addItem));
 		System.out.println("Congratulations! Item succesfully added to system.");
 	}
 	
@@ -157,7 +162,7 @@ public class ForklyDriver {
 		try {
 			listItem();
 			System.out.println("Type the ID of the item you'd like to delete and press enter: ");
-			is.deleteItem(scan.nextInt());
+			fi.deleteItem(scan.nextInt());
 			System.out.println("Congratulatins! Item has succesfully been deleted from the system.");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -167,9 +172,10 @@ public class ForklyDriver {
 	}
 	
 	private static void checkOffers() throws SQLException, IOException {
+		int itemId;
 		int offerId;
 		int status;
-		List<Offer> offers = os.getOffers();
+		List<Offer> offers = fo.getOffers();
 		for(Offer o: offers) {
 			System.out.println(o);
 		}
@@ -180,7 +186,25 @@ public class ForklyDriver {
 		Offer of = new Offer();
 		of.setOfferId(offerId);
 		of.setStatus(status);
-		os.ChangeOfferStatus(of);
+		fo.ChangeOfferStatus(of);
+		
+		if(status == 1) {
+			itemId = directToPayment(offerId);
+			fo.rejectPendingOffers(itemId);
+		}
+	}
+
+	public static int directToPayment(int offerId) throws SQLException, IOException {
+		Offer offer = new Offer();
+		offer = fo.retrieveOfferById(offerId);
+		Payment pm = new Payment();
+		pm.setItemId(offer.getItemId());
+		pm.setUserId(offer.getUserId());
+		pm.setOffer(offer.getPrice());
+		fp.createPayment(pm);
+		return pm.getItemId();
 	}
 	
-};
+	
+	
+}

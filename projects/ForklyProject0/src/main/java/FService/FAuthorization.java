@@ -1,10 +1,8 @@
 package FService;
 
-
-import Model.User;
-
 import java.io.IOException;
 
+import Model.User;
 import DAO.FUserDAO;
 import DAO.FUserPostgres;
 import FException.LoginException;
@@ -22,7 +20,7 @@ private FUserDAO ud = new FUserPostgres();
 			throw new LoginException();
 		}
 		return u;
-	};
+	}
 	
 	public boolean checkAdmin(String username) throws IOException {
 		User u = ud.retriveUserByUsername(username);

@@ -13,7 +13,7 @@ public class ForklyConnect{
 	public static Connection getConnectionFromFile() throws SQLException, IOException {
 		Properties prop = new Properties();
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		prop.load(loader.getResourceAsStream("connection.properties"));
+		prop.load(loader.getResourceAsStream("config.properties"));
 		
 		String url = prop.getProperty("url");
 		String username = prop.getProperty("username");

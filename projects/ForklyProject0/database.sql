@@ -74,3 +74,41 @@ rename column item to itemName;
 alter table items
 	add price integer
 ;
+
+alter table users
+	drop column firstname
+;
+
+alter table users
+	drop column lastname
+;
+
+alter table users 
+	add isAdmin varchar(10)
+;
+
+insert into users(isAdmin)
+values ('isAdmin')
+;
+
+alter table users
+rename column isAdmin to admin;
+
+alter table users
+rename column Admin to isAdmin;
+
+UPDATE public.users
+SET username='derek', "password"='derek', isadmin='1'
+WHERE user_id=5;
+
+UPDATE public.items
+SET itemname='BigFork', price='20'
+WHERE item_id=1;
+
+UPDATE public.items
+SET itemname='RegularFork', price='15'
+WHERE item_id=2;
+
+UPDATE public.items
+SET itemname='LittleFork', price='10'
+WHERE item_id=3;
