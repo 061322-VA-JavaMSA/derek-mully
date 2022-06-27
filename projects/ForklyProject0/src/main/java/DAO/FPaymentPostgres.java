@@ -15,7 +15,6 @@ import Model.Payment;
 public class FPaymentPostgres implements FPaymentDAO {
 	public Payment createPayment(Payment p) throws IOException {
 		String sql = "insert into payments (user_id, item_id, offer) values (?,?,?) returning payment_id;";
-		//connects to database and wraps statement for query execution
 		try(Connection c = ForklyConnect.getConnectionFromFile()){
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setInt(1, p.getUserId());
@@ -37,7 +36,7 @@ public class FPaymentPostgres implements FPaymentDAO {
 	public List<Payment> retrivePaymentByUserId(int userId) throws IOException{
 		String sql = "select * from payments where user_id = ?;";
 		List<Payment> payments = new ArrayList<Payment>();
-		//connects to database and wraps statement for query execution
+		
 		try(Connection c = ForklyConnect.getConnectionFromFile();) {
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setInt(1, userId);

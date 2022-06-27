@@ -48,7 +48,7 @@ public class Offer {
 		return "offer [offerId=" + offerId + ", userId=\" + userIditemId=" + itemId + ", price=" + price + "]";
 	}
 
-	public void setStatus(int status2) {
+	public void setStatus(int status) {
 		this.status = status;
 		// TODO Auto-generated method stub
 		

@@ -4,7 +4,7 @@ public class User {
 	private int id;
 	private String username;
 	private String password;
-	private boolean isAdmin;
+	private boolean isEmployee;
 	public User() {
 		super();
 	}
@@ -33,13 +33,14 @@ public class User {
 		this.password = password;
 	}
 
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
+	public void setEmployee(boolean isEmployee) {
+		this.isEmployee = isEmployee;
 		
 	}
 	
-	public boolean getAdmin() {
-		return isAdmin;
+	public boolean getEmployee() {
+		return isEmployee;
 	}
+
 
 }

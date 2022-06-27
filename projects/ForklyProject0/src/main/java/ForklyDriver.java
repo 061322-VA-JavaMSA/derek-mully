@@ -25,6 +25,7 @@ public class ForklyDriver {
 	static String username = null;
 	static String password = null;
 	static int user_id;
+	
 	public static void main(String[] args) throws LoginException, IOException, SQLException {
 		fa = new FAuthorization();
 		fo = new FOfferServe();
@@ -55,31 +56,32 @@ public class ForklyDriver {
 					password = scan.next();	
 					break;
 			//Don't know how to return with switch(scan)
-			default: System.out.println("That's not it. Please try again. Press 0 to exit.");
+			default: System.out.println("That's not it. Please try again.");
 					 System.exit(0);
 		}
 		//both cases 1 and 2 bring to login page
 		loginPage(username, password);
 		
 		scan.close();
-	}
 	
+	}
+
 	public static void loginPage(String username, String password) throws IOException, SQLException {
 		try {
 			fa.login(username, password);
 			
 		} catch (LoginException e) {
-			System.out.println("That's not it. Please try again. Press 0 to exit.");
+			System.out.println("That's not it. Please try again.");
 			System.exit(0);
 		}
 		//if else statement says that if the user logs in and the employee boolean says that it's false,
-		//then the the customer menu will be brought up. Meaning if the isAdmin column in the database is null,
+		//then the the customer menu will be brought up. Meaning if the isEmployee column in the database is null,
 		//then the customer menu is brought up. If it equals to 1, then the employee menu is brought up.
 		user_id = fa.checkid(username);
-		if(fa.checkAdmin(username) == false) {
+		if(fa.checkEmployee(username) == false) {
 			menu();
 		} else {
-			adminMenu();
+			employeeMenu();
 		}
 	}
 	//customer navigation menu
@@ -93,7 +95,7 @@ public class ForklyDriver {
 				listItem();
 				menu();
 				break;
-		case 2: 
+		case 2:
 			//still haven't figured out what to do with payments, so currently it uses the same function as making an offer
 		case 3: makeOffer();
 		default: 
@@ -128,7 +130,7 @@ public class ForklyDriver {
 		
 	}
 	//employee menu functioning because of isAdmin boolean created in database. 
-	public static void adminMenu() throws  IOException, SQLException {
+	public static void employeeMenu() throws  IOException, SQLException {
 		
 		System.out.println("Hello, employee!");
 		System.out.println("Press 1 and hit enter to remove an item.");
@@ -137,16 +139,16 @@ public class ForklyDriver {
 		switch(scan.nextInt()) {
 		case 1: 
 				deleteItem();
-				adminMenu();
+				employeeMenu();
 				break;
 		case 2: 
 				addItem();
-				adminMenu();
+				employeeMenu();
 				break;
 		case 3: checkOffers();
 				break;
 		default:
-				adminMenu();
+				employeeMenu();
 				break;
 	}
 	};

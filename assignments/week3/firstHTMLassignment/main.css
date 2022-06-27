@@ -1,0 +1,53 @@
+html{
+    background-color:lightgreen;
+
+    padding: 4%;
+    margin: 1%;
+}
+
+body{
+    background-color: beige;
+}
+
+header{
+    background-color:lightgreen;
+
+    text-align: center;
+    padding: 3%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 42px;
+    border-bottom: 2px black;
+    border-top: 2px black;
+}
+
+nav{
+    background-color:beige;
+    border-bottom: 2px black;
+    border-top: 2px black;
+
+
+}
+nav ul{
+    list-style-type: nonel
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+
+}
+nav ul li{
+    float:left;
+}
+nav ul li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+main{
+    background-color: lightgreen;
+}
+
+footer{
+    background-color:beige;
+}

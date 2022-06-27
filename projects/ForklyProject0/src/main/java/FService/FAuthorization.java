@@ -22,9 +22,9 @@ private FUserDAO ud = new FUserPostgres();
 		return u;
 	}
 	//checks to see if isAdmin clumn in users menu is not null. Only "derek" account in users is not null
-	public boolean checkAdmin(String username) throws IOException {
+	public boolean checkEmployee(String username) throws IOException {
 		User u = ud.retriveUserByUsername(username);
-		return u.getAdmin();
+		return u.getEmployee();
 		
 	}
 	//grabs auto-generated primary key

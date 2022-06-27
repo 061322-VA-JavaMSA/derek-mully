@@ -6,9 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 import ForklyUtil.ForklyConnect;
 import Model.User;
@@ -58,7 +55,7 @@ public class FUserPostgres implements FUserDAO {
 				u.setId(rs.getInt("user_id"));
 				u.setUsername(rs.getString("username"));
 				u.setPassword(rs.getString("password"));
-				u.setAdmin(rs.getBoolean("isAdmin"));
+				u.setEmployee(rs.getBoolean("isEmployee"));
 			}
 			
 		} catch (SQLException e) {
