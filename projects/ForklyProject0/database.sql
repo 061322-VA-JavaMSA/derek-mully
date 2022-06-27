@@ -112,3 +112,61 @@ WHERE item_id=2;
 UPDATE public.items
 SET itemname='LittleFork', price='10'
 WHERE item_id=3;
+
+drop table if exists users cascade;
+
+create table if not exists payment(
+);
+
+DROP TABLE IF EXISTS payments
+
+alter table offers
+	add user_id integer
+;
+
+insert into offers(user_id) select user_id from users;
+
+alter table offers
+	add item_id integer
+;
+
+insert into offers(item_id) select item_id from items;
+
+alter table offers
+	add offer integer
+;
+
+alter table offers
+	add status varchar(20)
+;
+
+alter table payment
+	add user_id integer
+;
+
+insert into payment(user_id) select user_id from users;
+
+alter table payment
+	add item_id integer
+;
+
+insert into payment(item_id) select item_id from items;
+
+alter table payment
+	add status varchar(20)
+;
+
+insert into payment(status) select status from offers;
+
+alter table payment
+	rename to payments;
+	
+alter table payments
+	add offer integer
+;
+
+insert into payments(offer) select offer from offers;
+
+alter table payments 
+	add payment_id serial primary key
+;

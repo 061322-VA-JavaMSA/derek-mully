@@ -121,7 +121,7 @@ public class ForklyDriver {
 	
 	public static void adminMenu() throws  IOException, SQLException {
 		
-		System.out.println("Hello, admin!");
+		System.out.println("Hello, employee!");
 		System.out.println("Press 1 and hit enter to remove an item.");
 		System.out.println("Press 2 and hit enter to add an item.");
 		System.out.println("Press 3 and hit enter to review current offers.");
