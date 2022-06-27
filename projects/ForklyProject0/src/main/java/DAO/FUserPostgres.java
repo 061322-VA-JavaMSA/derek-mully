@@ -19,7 +19,9 @@ public class FUserPostgres implements FUserDAO {
 	}
 
 	public User createUser(User u) throws IOException {
+		//SQL INSERT statement into users table to insert user input username and password, and returning their newly made serial primary key
 		String sql = "insert into users (username, password) values (?,?) returning user_id;";
+		//connects to database and wraps statement for query execution
 		try(Connection c = ForklyConnect.getConnectionFromFile()){
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setString(1, u.getUsername());
@@ -40,9 +42,10 @@ public class FUserPostgres implements FUserDAO {
 
 
 	public User retriveUserByUsername(String username) throws IOException {
+		//SQL SELECT all statement from users table where username column is the same value as a user input for login
 		String sql = "select * from users where username  = ?;";
 		User u = null;
-		
+		//connects to database and wraps statement for query execution
 		try (Connection c = ForklyConnect.getConnectionFromFile();){
 			PreparedStatement ps = c.prepareStatement(sql);
 			

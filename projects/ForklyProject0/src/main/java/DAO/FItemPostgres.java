@@ -17,7 +17,9 @@ public class FItemPostgres implements FItemDAO {
 
 	@Override
 	public Item createItem(Item i) throws IOException {
+		//SQL INSERT statement
 		String sql = "insert into items (itemname, price) values (?,?) returning item_id;";
+		//connects to database and wraps statement for query execution
 		try(Connection c = ForklyConnect.getConnectionFromFile()){
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setString(1, i.getItemname());
@@ -38,9 +40,10 @@ public class FItemPostgres implements FItemDAO {
 	@Override
 	public List<Item> retrieveItems() throws SQLException, IOException {
 		// TODO Auto-generated method stub
+		//SQL SELECT statement
 		String sql = "select * from items;";
 		List<Item> items = new ArrayList<>();
-		
+		//connects to database and wraps statement for query execution
 		try(Connection c = ForklyConnect.getConnectionFromFile();) {
 			Statement s = c.createStatement();
 			ResultSet rs = s.executeQuery(sql);
@@ -61,6 +64,7 @@ public class FItemPostgres implements FItemDAO {
 	public boolean deleteItemByid(int id) throws IOException {
 		String sql = "delete from items where item_id = ?;";
 		int rowsChanged = -1;
+		//connects to database and wraps statement for query execution
 		try(Connection c = ForklyConnect.getConnectionFromFile()){
 			PreparedStatement ps = c.prepareStatement(sql);
 			
@@ -81,7 +85,7 @@ public class FItemPostgres implements FItemDAO {
 	@Override
 	public Item makeAnOffer(Item i) throws IOException {
 		String sql = "insert into offers (user_id, item_id, offer) values (?,?,?) returning offer_id;";
-		
+		//connects to database and wraps statement for query execution
 		try(Connection c = ForklyConnect.getConnectionFromFile()){
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setInt(1, i.getUserId());

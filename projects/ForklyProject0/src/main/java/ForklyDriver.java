@@ -15,6 +15,7 @@ import Model.Offer;
 import Model.Payment;
 
 public class ForklyDriver {
+	//access all services and scanner through defined variables
 	static Scanner scan;
 	static FAuthorization fa;
 	static FUserServe fu;
@@ -34,7 +35,7 @@ public class ForklyDriver {
 		scan = new Scanner(System.in);
 		
 		System.out.println("Press 1 to register a new account. Press 2 to login. Then hit enter.");
-		
+		// 1 will register a new account in the database and 2 will access existing accounts
 		switch (scan.nextInt()) {
 			case 1: System.out.println("Enter your desired username.");
 					String uname = scan.next();
@@ -53,10 +54,11 @@ public class ForklyDriver {
 					System.out.println("Enter your password:");
 					password = scan.next();	
 					break;
+			//Don't know how to return with switch(scan)
 			default: System.out.println("That's not it. Please try again. Press 0 to exit.");
 					 System.exit(0);
 		}
-		
+		//both cases 1 and 2 bring to login page
 		loginPage(username, password);
 		
 		scan.close();
@@ -70,6 +72,9 @@ public class ForklyDriver {
 			System.out.println("That's not it. Please try again. Press 0 to exit.");
 			System.exit(0);
 		}
+		//if else statement says that if the user logs in and the employee boolean says that it's false,
+		//then the the customer menu will be brought up. Meaning if the isAdmin column in the database is null,
+		//then the customer menu is brought up. If it equals to 1, then the employee menu is brought up.
 		user_id = fa.checkid(username);
 		if(fa.checkAdmin(username) == false) {
 			menu();
@@ -77,6 +82,7 @@ public class ForklyDriver {
 			adminMenu();
 		}
 	}
+	//customer navigation menu
 	public static void menu( ) throws SQLException, IOException {
 		System.out.println("Welcome to Forkly, valued customer!");
 		System.out.println("Press 1 and hit enter to see our items.");
@@ -88,19 +94,22 @@ public class ForklyDriver {
 				menu();
 				break;
 		case 2: 
+			//still haven't figured out what to do with payments, so currently it uses the same function as making an offer
 		case 3: makeOffer();
 		default: 
 				menu();
 				break;
 	}
 	}
-	
+	//uses the item service to get items and list the values in the console
 	public static void listItem() throws SQLException, IOException {
 		List<Item> items = fi.getItems();
 		for(Item i: items) {
 			System.out.println(i);
 		}
 	}
+	//make offer menu option lists items and asks to choose one, then sends offers for approval for employee
+	//if in employee menu these offers can be accepted
 	public static void makeOffer() throws IOException, SQLException {
 		int itemid;
 		int price;
@@ -118,7 +127,7 @@ public class ForklyDriver {
 		System.out.println("Your offer has been received. Please wait at least 3 business days for a response.");
 		
 	}
-	
+	//employee menu functioning because of isAdmin boolean created in database. 
 	public static void adminMenu() throws  IOException, SQLException {
 		
 		System.out.println("Hello, employee!");
@@ -143,7 +152,7 @@ public class ForklyDriver {
 	};
 
 	
-
+	//accesses "itemname" and "price" columns in items table in SQL and adds item to table if inputs are valid
 	public static void addItem() throws IOException {
 		String itemname;
 		int price;
@@ -157,7 +166,7 @@ public class ForklyDriver {
 		System.out.println(fi.createItem(addItem));
 		System.out.println("Congratulations! Item succesfully added to system.");
 	}
-	
+	//accesses existing items in items table in SQL database and allows access to remove items from store
 	public static void deleteItem() {
 		try {
 			listItem();
@@ -168,6 +177,7 @@ public class ForklyDriver {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+			//need a way to return to the main employee menu from here
 		}
 	}
 	
@@ -191,9 +201,10 @@ public class ForklyDriver {
 		if(status == 1) {
 			itemId = directToPayment(offerId);
 			fo.rejectPendingOffers(itemId);
+			//need a return for rejectPendingOffers back to employee menu
 		}
 	}
-
+	//payment still functioning as offer...must figure out
 	public static int directToPayment(int offerId) throws SQLException, IOException {
 		Offer offer = new Offer();
 		offer = fo.retrieveOfferById(offerId);

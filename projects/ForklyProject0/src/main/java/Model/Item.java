@@ -25,14 +25,6 @@ public class Item {
 	public String getItemname() {
 		return itemName;
 	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	
-	public int getPrice() {
-		return price;
-	}
 	
 	public String toString() {
 		return "item [id=" + itemId + ", itemname=" + itemName + ", price=" + price + "]";
@@ -43,6 +35,14 @@ public class Item {
 	}
 	public void setOffer(int offer) {
 		this.offer = offer;
+		
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+		
+	public int getPrice() {
+		return price;
 	}
 	
 	public void setUserId (int userId) {

@@ -25,6 +25,6 @@ public class FOfferServe {
 
 	public boolean rejectPendingOffers(int itemId) throws IOException {
 		return od.rejectPendingOffer(itemId); 
-		
+		//still need to figure out when offer is rejected how to redirect to employee menu once more
 	}
 }

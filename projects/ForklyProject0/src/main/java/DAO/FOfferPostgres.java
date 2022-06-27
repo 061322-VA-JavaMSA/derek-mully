@@ -15,9 +15,10 @@ import ForklyUtil.ForklyConnect;
 public class FOfferPostgres implements FOfferDAO {
 
 	public List<Offer> retrieveOffers() throws SQLException, IOException {
+		//SQL SELECT statement from offers table retreiving all offers with corresponding column values
 		String sql = "select * from offers;";
 		List<Offer> offers = new ArrayList<>();
-		
+		//connects to database and wraps statement for query execution
 		try(Connection c = ForklyConnect.getConnectionFromFile();) {
 			Statement s = c.createStatement();
 			ResultSet rs = s.executeQuery(sql);
@@ -37,9 +38,10 @@ public class FOfferPostgres implements FOfferDAO {
 	}
 	
 	public Offer retrieveOffersById(int id) throws SQLException, IOException {
+		//SQL SELECT all statement from offers table and setting all values in relevant columns
 		String sql = "select * from offers;";
-	
 		Offer o = null;
+		//connects to database and wraps statement for query execution
 		try(Connection c = ForklyConnect.getConnectionFromFile();) {
 			Statement s = c.createStatement();
 			ResultSet rs = s.executeQuery(sql);
@@ -60,10 +62,11 @@ public class FOfferPostgres implements FOfferDAO {
 	
 	@Override
 	public boolean updateOffer(Offer o) throws SQLException, IOException {
+		//SQL UPDATE statement grabbing status and offer_id from database and changing
 		String sql = "update offers set status = ? where offer_id = ?";
 		int rowsChanged = -1;
 		
-		
+		//connects to database and wraps statement for query execution
 		try(Connection c = ForklyConnect.getConnectionFromFile()){
 			PreparedStatement ps = c.prepareStatement(sql);
 			
@@ -78,16 +81,17 @@ public class FOfferPostgres implements FOfferDAO {
 		if(rowsChanged < 1) {
 			return false;
 		} else {
-			System.out.println("status is successfully changed");
+			System.out.println("The status of the offer has been changed");
 		}
 		return true;
 	}
 	
 	public boolean rejectPendingOffer(int itemId) throws IOException {
+		//SQL DELETE statement accessing relevant value from item_id column
 		String sql = "delete from offers where item_id = ?";
 		int rowsChanged = -1;
 		
-		
+		//connects to database and wraps statement for query execution
 		try(Connection c = ForklyConnect.getConnectionFromFile()){
 			PreparedStatement ps = c.prepareStatement(sql);	
 			ps.setInt(1, itemId);
