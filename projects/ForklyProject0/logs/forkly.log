@@ -2,3 +2,22 @@
 21:27:30 [main] INFO  FService.FUserServe - User: Model.User@748741cbhas been created.
 21:33:46 [main] INFO  ForklyDriver - Your offer 25 has been taken in.
 21:34:49 [main] INFO  ForklyDriver - Your offer 25 has been taken in.
+21:36:59 [main] INFO  ForklyDriver - Your offer 25 has been taken in for user 1
+22:47:18 [main] INFO  ForklyDriver - Your offer 20 has been taken in for user number 1
+22:47:23 [main] INFO  ForklyDriver - Your offer 15 has been taken in for user number 1
+22:47:28 [main] INFO  ForklyDriver - Your offer 10 has been taken in for user number 1
+22:47:45 [main] INFO  ForklyDriver - Your offer 25 has been taken in for user number 1
+22:47:54 [main] INFO  ForklyDriver - Your offer 30 has been taken in for user number 1
+22:48:05 [main] INFO  ForklyDriver - Your offer 40 has been taken in for user number 1
+22:48:38 [main] INFO  ForklyDriver - Your offer 20 has been taken in for user number 10
+22:48:43 [main] INFO  ForklyDriver - Your offer 15 has been taken in for user number 10
+22:48:47 [main] INFO  ForklyDriver - Your offer 10 has been taken in for user number 10
+22:48:54 [main] INFO  ForklyDriver - Your offer 25 has been taken in for user number 10
+22:49:02 [main] INFO  ForklyDriver - Your offer 30 has been taken in for user number 10
+22:49:13 [main] INFO  ForklyDriver - Your offer 40 has been taken in for user number 10
+22:49:32 [main] INFO  ForklyDriver - Your offer 20 has been taken in for user number 12
+22:49:37 [main] INFO  ForklyDriver - Your offer 15 has been taken in for user number 12
+22:49:42 [main] INFO  ForklyDriver - Your offer 10 has been taken in for user number 12
+22:49:48 [main] INFO  ForklyDriver - Your offer 25 has been taken in for user number 12
+22:49:55 [main] INFO  ForklyDriver - Your offer 30 has been taken in for user number 12
+22:50:01 [main] INFO  ForklyDriver - Your offer 40 has been taken in for user number 12

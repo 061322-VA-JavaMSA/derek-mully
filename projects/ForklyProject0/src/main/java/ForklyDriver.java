@@ -17,8 +17,8 @@ import Model.Offer;
 import Model.Payment;
 
 public class ForklyDriver {
-	//access all services and scanner through defined variables that reference service classes
 	private static Logger log = LogManager.getLogger(ForklyDriver.class);
+	//access all services and scanner through defined variables that reference service classes
 	static Scanner scan;
 	static FAuthorization fa;
 	static FUserServe fu;
@@ -30,6 +30,7 @@ public class ForklyDriver {
 	static int user_id;
 	
 	public static void main(String[] args) throws LoginException, IOException, SQLException {
+		//access of service layers throughout driver through the creation of variables
 		fa = new FAuthorization();
 		fo = new FOfferServe();
 		fp = new FPaymentServe();
@@ -45,6 +46,7 @@ public class ForklyDriver {
 					String uname = scan.next();
 					System.out.println("Enter your desired password.");
 					String pass = scan.next();
+					//scans user input to create new username and password to be injected into database
 					User userTBC = new User();
 					userTBC.setUsername(uname);
 					userTBC.setPassword(pass);
@@ -62,7 +64,7 @@ public class ForklyDriver {
 			default: System.out.println("That's not it. Please try again.");
 					 System.exit(0);
 		}
-		//both cases 1 and 2 bring to login page
+		//both cases 1 and 2 bring to login page and check login validity
 		loginPage(username, password);
 		
 		scan.close();
@@ -133,7 +135,7 @@ public class ForklyDriver {
 		System.out.println("Your offer has been received. Please wait at least 3 business days for a response.");
 		
 	}
-	//employee menu functioning because of isAdmin boolean created in database. 
+	//employee menu functioning because of isEmployee boolean created in database. 
 	public static void employeeMenu() throws  IOException, SQLException {
 		
 		System.out.println("Hello, employee!");
@@ -156,7 +158,9 @@ public class ForklyDriver {
 				break;
 	}
 	};
-
+	//First all of the pending offers based on user input are retrieved and listed. Then based on
+	//employee boolean entry the offer is accepted, or denied then all pending offers are dropped from database
+	//for that particular item
 	private static void checkOffers() throws SQLException, IOException {
 		int itemId;
 		int offerId;
@@ -180,7 +184,7 @@ public class ForklyDriver {
 			//need a return for rejectPendingOffers back to employee menu
 		}
 	}	
-	//accesses "itemname" and "price" columns in items table in SQL and adds item to table if inputs are valid
+	//accesses "itemname" and "price" columns in items table in SQL and adds item to table
 	public static void addItem() throws IOException {
 		String itemname;
 		int price;
@@ -221,7 +225,6 @@ public class ForklyDriver {
 		fp.createPayment(pm);
 		return pm.getItemId();
 	}
-	
 	
 	
 }

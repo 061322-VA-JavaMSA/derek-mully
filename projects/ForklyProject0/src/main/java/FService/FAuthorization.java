@@ -9,19 +9,18 @@ import FException.LoginException;
 
 public class FAuthorization {
 private FUserDAO ud = new FUserPostgres();
-	
+	//login with exceptions that require user input
 	public User login(String username, String password) throws LoginException, IOException {
 		if(username == null || password == null) {
 			throw new LoginException();
 		}
-		//still need to figure out how to return to login if LoginException is triggered
 		User u = ud.retriveUserByUsername(username);
 		if(u == null || !u.getPassword().equals(password)) {
 			throw new LoginException();
 		}
 		return u;
 	}
-	//checks to see if isAdmin clumn in users menu is not null. Only "derek" account in users is not null
+	//Employee in users table is checked by column isEmployee boolean. If value is 1, then the user is an employee.
 	public boolean checkEmployee(String username) throws IOException {
 		User u = ud.retriveUserByUsername(username);
 		return u.getEmployee();
