@@ -2,6 +2,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.io.IOException;
 import java.sql.SQLException;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import FException.LoginException;
 import FService.FAuthorization;
@@ -16,6 +18,7 @@ import Model.Payment;
 
 public class ForklyDriver {
 	//access all services and scanner through defined variables
+	private static final Logger logger = LogManager.getLogger(ForklyDriver.class);
 	static Scanner scan;
 	static FAuthorization fa;
 	static FUserServe fu;
@@ -153,7 +156,29 @@ public class ForklyDriver {
 	}
 	};
 
-	
+	private static void checkOffers() throws SQLException, IOException {
+		int itemId;
+		int offerId;
+		int status;
+		List<Offer> offers = fo.getOffers();
+		for(Offer o: offers) {
+			System.out.println(o);
+		}
+		System.out.println("Enter the ID of the offer to make a decision.");
+		offerId = scan.nextInt();
+		System.out.println("Press 1 and hit enter to accept the offer. Press 0 and hit enter to deny the offer.");
+		status = scan.nextInt();
+		Offer of = new Offer();
+		of.setOfferId(offerId);
+		of.setStatus(status);
+		fo.ChangeOfferStatus(of);
+		
+		if(status == 1) {
+			itemId = directToPayment(offerId);
+			fo.rejectPendingOffers(itemId);
+			//need a return for rejectPendingOffers back to employee menu
+		}
+	}	
 	//accesses "itemname" and "price" columns in items table in SQL and adds item to table if inputs are valid
 	public static void addItem() throws IOException {
 		String itemname;
@@ -183,29 +208,7 @@ public class ForklyDriver {
 		}
 	}
 	
-	private static void checkOffers() throws SQLException, IOException {
-		int itemId;
-		int offerId;
-		int status;
-		List<Offer> offers = fo.getOffers();
-		for(Offer o: offers) {
-			System.out.println(o);
-		}
-		System.out.println("Enter the ID of the offer to make a decision.");
-		offerId = scan.nextInt();
-		System.out.println("Press 1 and hit enter to accept the offer. Press 0 and hit enter to deny the offer.");
-		status = scan.nextInt();
-		Offer of = new Offer();
-		of.setOfferId(offerId);
-		of.setStatus(status);
-		fo.ChangeOfferStatus(of);
-		
-		if(status == 1) {
-			itemId = directToPayment(offerId);
-			fo.rejectPendingOffers(itemId);
-			//need a return for rejectPendingOffers back to employee menu
-		}
-	}
+
 	//payment still functioning as offer...must figure out
 	public static int directToPayment(int offerId) throws SQLException, IOException {
 		Offer offer = new Offer();
