@@ -2,8 +2,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.io.IOException;
 import java.sql.SQLException;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import FException.LoginException;
 import FService.FAuthorization;
@@ -17,8 +17,8 @@ import Model.Offer;
 import Model.Payment;
 
 public class ForklyDriver {
-	//access all services and scanner through defined variables
-	private static final Logger logger = LogManager.getLogger(ForklyDriver.class);
+	//access all services and scanner through defined variables that reference service classes
+	private static Logger log = LogManager.getLogger(ForklyDriver.class);
 	static Scanner scan;
 	static FAuthorization fa;
 	static FUserServe fu;
@@ -129,6 +129,7 @@ public class ForklyDriver {
 		i.setOffer(price);
 		i.setUserId(user_id);
 		fi.makeOffer(i);
+		log.info("Your offer " + price + " has been taken in for user number " + user_id);
 		System.out.println("Your offer has been received. Please wait at least 3 business days for a response.");
 		
 	}
