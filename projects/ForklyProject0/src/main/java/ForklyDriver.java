@@ -34,7 +34,7 @@ public class ForklyDriver {
 		fa = new FAuthorization();
 		fo = new FOfferServe();
 		fp = new FPaymentServe();
-		fu = new FUserServe();
+		fu = new FUserServe();                                                                 
 		fi = new FItemServe();
 		
 		scan = new Scanner(System.in);

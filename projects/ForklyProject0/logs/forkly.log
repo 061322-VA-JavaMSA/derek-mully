@@ -21,3 +21,7 @@
 22:49:48 [main] INFO  ForklyDriver - Your offer 25 has been taken in for user number 12
 22:49:55 [main] INFO  ForklyDriver - Your offer 30 has been taken in for user number 12
 22:50:01 [main] INFO  ForklyDriver - Your offer 40 has been taken in for user number 12
+10:36:33 [main] INFO  FService.FUserServe - User: Model.User@748741cbhas been created.
+10:37:16 [main] INFO  ForklyDriver - Your offer 40 has been taken in for user number 13
+10:37:39 [main] INFO  ForklyDriver - Your offer 25 has been taken in for user number 13
+10:40:36 [main] INFO  ForklyDriver - Your offer 40 has been taken in for user number 10
