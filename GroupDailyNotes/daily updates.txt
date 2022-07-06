@@ -1,0 +1,25 @@
+Daily Logs
+
+07/06/2022
+
+Michael
+	What did you do yesterday?
+		- Created hibernate file, created database tables, and did user model
+	WHat am I doing today?
+		- Go through recordings and figure out how to formulate base types for project.
+	Do I have any blockers?
+		- No.
+Nestor:
+	What did you do yesterday?
+		- Went to check hackerrank problems to prepare for QC.
+	What am I doing today?
+		- Same as Michael, and try to establish connection with server.
+	Do I have any blockers?
+		- No.
+Derek: 
+	What did you do yesterday?
+		- Prepared hibernate file and other config things for project.
+	What am I doing today?
+		- Create user model, and setup DAO's, and QC.
+	Do I have any blockers?
+		- No.
