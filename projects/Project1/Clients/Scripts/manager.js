@@ -49,11 +49,11 @@ function populateTable(results){
         let type;
         let time;
         if(result.reimbTypeId == 1) {
-            type = 'lodging'
+            type = 'hotel'
         } else if (result.reimbTypeId == 2) {
-            type = 'travel'
+            type = 'gas'
         } else if (result.reimbTypeId == 3) {
-            type = 'food'
+            type = 'meal'
         } else if (result.reimbTypeId == 4) {
             type = 'other'
         }
