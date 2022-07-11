@@ -41,11 +41,11 @@ function populateTable(results){
         let status;
         let time;
         if(result.reimbTypeId == 1) {
-            type = 'hotel'
+            type = 'lodging'
         } else if (result.reimbTypeId == 2) {
-            type = 'gas'
+            type = 'travel'
         } else if (result.reimbTypeId == 3) {
-            type = 'meal'
+            type = 'food'
         } else if (result.reimbTypeId == 4) {
             type = 'other'
         }
