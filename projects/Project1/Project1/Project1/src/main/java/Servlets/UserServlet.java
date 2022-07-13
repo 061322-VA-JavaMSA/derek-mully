@@ -36,12 +36,12 @@ public class UserServlet extends HttpServlet{
 				if (pathInfo == null) {
 					
 						List<User> users = us.getUsers();
-						List<DTOUser> usersDTO = new ArrayList<>();
+						List<User> users = new ArrayList<>();
 
-						users.forEach(u -> DTOUser.add(new DTOUser(u)));
+						users.forEach(u -> User.add(new User(u)));
 
 						PrintWriter pw = res.getWriter();
-						pw.write(om.writeValueAsString(usersDTO));
+						pw.write(om.writeValueAsString(users));
 
 						pw.close();
 					
