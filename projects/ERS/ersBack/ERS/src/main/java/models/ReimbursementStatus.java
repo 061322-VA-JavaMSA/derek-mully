@@ -57,6 +57,11 @@ public class ReimbursementStatus {
 	public String toString() {
 		return "ReimbursementStatus [id=" + id + ", reimb_status=" + reimb_status + "]";
 	}
+
+	public void setStatusByID(int i, int j, String string) {
+		// TODO Auto-generated method stub
+		
+	}
 	
  
 }

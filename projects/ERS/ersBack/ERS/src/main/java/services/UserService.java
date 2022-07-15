@@ -49,4 +49,9 @@ public class UserService {
 		return checkUpdate;
 	}
 
+	public List<User> getUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
