@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter; 
 
 import dtos.UserDto;
 import exceptions.UserNotCreatedException;
@@ -22,9 +23,6 @@ import models.User;
 import services.UserService;
 import util.CorsFix;
 
-/*- 
- * Handles all of the requests made to /users(/...)
- */
 public class UserServlet extends HttpServlet {
 
 	/**
@@ -32,20 +30,10 @@ public class UserServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 	private UserService us = new UserService();
-	// object to convert to JSON format
 	private ObjectMapper om = new ObjectMapper();
 
-	/*-
-	 * All GET request made to the /users endpoint are funneled to this doGet method
-	 * 		- /users
-	 * 			- returns all users
-	 * 		- /users/{id}
-	 * 			- returns a user of a specific id
-	 * Have to determine which behavior to execute based on the URL request 
-	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		// Specifying that the response content-type will be JSON
 		CorsFix.addCorsHeader(req.getRequestURI(), res);
 		res.addHeader("Content-Type", "application/json");
 
@@ -57,12 +45,9 @@ public class UserServlet extends HttpServlet {
 			List<User> users = us.getUsers();
 			List<UserDto> usersDTO = new ArrayList<>();
 
-			// converting Users to UserDTOs for data transfer
 			users.forEach(u -> usersDTO.add(new UserDto(u)));
 
-			// retrieving print writer to write to the Response body
 			PrintWriter pw = res.getWriter();
-			// writing toString representation of Users to body
 			pw.write(om.writeValueAsString(usersDTO));
 
 			pw.close();

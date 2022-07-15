@@ -81,7 +81,6 @@ public class ReimbursementServlet extends HttpServlet {
 				log.info("Request Received");
 				res.setStatus(200);
 			} catch (UserNotFoundException e) {
-				// return 404, user not found
 				res.setStatus(404);
 				e.printStackTrace();
 			}
