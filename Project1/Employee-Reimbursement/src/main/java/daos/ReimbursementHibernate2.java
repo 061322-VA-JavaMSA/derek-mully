@@ -67,7 +67,7 @@ public class ReimbursementHibernate2 implements ReimbursementDao {
 
 	@Override
 	public List<Reimbursement> getByAuthor(User u) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 

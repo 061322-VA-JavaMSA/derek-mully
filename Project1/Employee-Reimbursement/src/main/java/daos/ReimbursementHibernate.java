@@ -29,7 +29,7 @@ public class ReimbursementHibernate implements ReimbursementDao {
 			r.setId(id);
 			tx.commit();	
 		} catch(ConstraintViolationException e) {
-			//LOG THIS
+			
 		}
 		return r;
 	}
@@ -47,13 +47,13 @@ public class ReimbursementHibernate implements ReimbursementDao {
 
 	@Override
 	public Reimbursement getReimbursementbyStatus(Status status) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public Reimbursement getReimbursementByUsername(String username) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
@@ -70,7 +70,7 @@ public class ReimbursementHibernate implements ReimbursementDao {
 
 	@Override
 	public List<Reimbursement> getByAuthor(User u) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 

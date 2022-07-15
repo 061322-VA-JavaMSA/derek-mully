@@ -5,9 +5,7 @@ import java.util.Objects;
 import models.Role;
 import models.User;
 
-/*-
- * Data Transfer Objects
- */
+
 public class UserDto {
 
 	private int id;

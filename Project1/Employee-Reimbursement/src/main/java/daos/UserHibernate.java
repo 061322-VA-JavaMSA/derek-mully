@@ -48,21 +48,19 @@ public class UserHibernate implements UserDao {
 		User user = null;
 		
 		try(Session s = HibernateUtil.getSessionFactory().openSession();){
-			// SELECT * FROM USERS WHERE USERNAME = '';
+
 			
 			CriteriaBuilder cb = s.getCriteriaBuilder();
 			CriteriaQuery<User> cq = cb.createQuery(User.class);
-			// define entity to be searched
+
 			Root<User> root = cq.from(User.class);
 			
-			//define conditions
+
 			Predicate predicateForUsername = cb.equal(root.get("username"), username);
-//			Predicate predicateForSomethingElse = cb.equal(root.get("password"), password);
-//			Predicate predicateFromUnameAndPass = cb.and(predicateForUsername, predicateForSomethingElse);
+
 			
 			cq.select(root).where(predicateForUsername);
-			
-			// retrieves the result
+
 			user = (User) s.createQuery(cq).getSingleResult();
 		}
 		

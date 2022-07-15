@@ -22,7 +22,7 @@ public class ReimbursementType {
 	
 	public ReimbursementType() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 

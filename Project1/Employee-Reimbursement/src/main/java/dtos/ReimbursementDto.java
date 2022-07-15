@@ -27,7 +27,6 @@ public class ReimbursementDto {
 	
 	public ReimbursementDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public ReimbursementDto(Reimbursement r) {
 		id = r.getId();
