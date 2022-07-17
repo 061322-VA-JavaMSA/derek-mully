@@ -15,7 +15,10 @@ const reimDecide = {
 }
 
 let response = await fetch(`${apiUrl}/reimbursement/${reimId}`,{
+    
+
     method: 'PUT',
+
 
     body: JSON.stringify(reimDecide)
 
