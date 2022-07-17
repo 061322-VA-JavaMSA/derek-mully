@@ -12,7 +12,7 @@ const reimDecide = {
         resolver_id: `${resolver_id}`,
         status: `${decide}`,
 
-} 
+}
 
 let response = await fetch(`${apiUrl}/reimbursement/${reimId}`,{
     method: 'PUT',

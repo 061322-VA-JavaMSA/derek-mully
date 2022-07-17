@@ -16,6 +16,7 @@ import models.Reimbursement;
 import models.ReimbursementStatus;
 import models.User;
 
+@SuppressWarnings("unused")
 public class ReimbursementService {
 	
 	private ReimbursementDao rd = new ReimbursementHibernate();
