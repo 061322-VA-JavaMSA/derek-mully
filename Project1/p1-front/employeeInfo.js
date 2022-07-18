@@ -27,7 +27,7 @@ function populateTable(data){
         tdId.innerHTML = user.id;
         tdUsername.innerHTML = user.username;
         tdRole.innerHTML = user.role.user_role;
-        if(tdRole.innerHTML == 'employee'){
+        if(tdUsername.innerHTML == 'employee1'){
         tr.append(tdId);
         tr.append(tdUsername);
         tr.append(tdRole);
