@@ -88,12 +88,7 @@ public class ReimbursementHibernate implements ReimbursementDao {
 			CriteriaBuilder cb = s.getCriteriaBuilder();
 			CriteriaUpdate<Reimbursement> cu = cb.createCriteriaUpdate(Reimbursement.class);
 			Root<Reimbursement> root  = cu.from(Reimbursement.class);
-			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-			cu.set(root.get("reim_status"), status);
-			cu.set(root.get("resolver"), resolver);
-			cu.set(root.get("resolved"), timestamp);
-			cu.where(cb.equal(root.get("id"),id));
-			rowsChanged =s.createQuery(cu).executeUpdate();
+
 			
 			String sql = "update reimbursement set resolver_id = :resolver_id, reimbursement_status_id = :reimbursement_status_id  where id = :id ;";
 			NativeQuery<User> nq = s.createNativeQuery(sql, User.class);
